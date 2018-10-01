@@ -41,6 +41,5 @@ class CPanel extends JPanel{
     public void paintComponent(Graphics g){
         g.setColor(Color.RED);
         g.fillOval(x_circle, y_circle ,x_dia, y_dia);
-        //g.drawRect(x_loc, y_loc, 71, 71);
     }
 }
