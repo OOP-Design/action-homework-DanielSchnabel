@@ -9,19 +9,19 @@ import javax.imageio.*;
 public class Menu{
     public static void main(String[] args){
         MenuFrame frame = new MenuFrame();
-        MenuPanel panel = new MenuPanel();
-        frame.add(panel);
-        panel.setBackground(Color.RED);
         frame.setVisible(true);
     }
 }
 
 class MenuFrame extends JFrame{
+    MenuPanel panel = new MenuPanel();
     public MenuFrame(){
         super("Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         displayMenu();
         setSize(700,700);
+	
+        add(panel);
     }
     public void displayMenu(){
         JMenuBar menuBar = new JMenuBar();
@@ -41,7 +41,7 @@ class MenuFrame extends JFrame{
     private class BackgroundColorListener implements ActionListener{
         private BackgroundColor color;
         public void actionPerformed(ActionEvent e){
-            setBackground(color.color);
+           panel.setBackground(color.color());
         }
         public BackgroundColorListener(BackgroundColor color){
             this.color = color;
