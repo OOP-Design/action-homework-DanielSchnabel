@@ -20,7 +20,6 @@ class MenuFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         displayMenu();
         setSize(700,700);
-	
         add(panel);
     }
     public void displayMenu(){
@@ -51,6 +50,5 @@ class MenuFrame extends JFrame{
 
 class MenuPanel extends JPanel{
     public MenuPanel(){
-
     }
 }
