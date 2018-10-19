@@ -32,7 +32,6 @@ class ButtonFrame extends JFrame{
             panel.addLetter();
         }
     }
-
 }
 
 class ButtonPanel extends JPanel{
