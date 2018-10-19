@@ -14,7 +14,7 @@ public class Button{
 }
 
 class ButtonFrame extends JFrame{
-    ButtonPanel panel = new ButtonPanel();
+    static ButtonPanel panel = new ButtonPanel();
 
     private String pressedKey;
 
@@ -28,24 +28,18 @@ class ButtonFrame extends JFrame{
     class KeyListener extends KeyAdapter{
         public void keyPressed(KeyEvent e){
             pressedKey = e.getKeyText(e.getKeyCode());
-            addLetterCaller();
+            panel.charArray.add(pressedKey);
+            panel.addLetter();
         }
     }
 
-    public void addLetterCaller(){
-        ButtonPanel.addLetter();
-    }
-
-    public String pressedKeyGetter(){
-        return pressedKey;
-    }
 }
 
 class ButtonPanel extends JPanel{
-    private ArrayList<String> charArray = new ArrayList<String>();
+    public ArrayList<String> charArray = new ArrayList<String>();
     private ArrayList<Integer> x_Array = new ArrayList<Integer>();
     private ArrayList<Integer> y_Array = new ArrayList<Integer>();
-    private String pressedKey;
+
     private int x;
     private int y;
 
@@ -65,8 +59,6 @@ class ButtonPanel extends JPanel{
     }
 
     public void addLetter(){
-        pressedKey = ButtonFrame.pressedKeyGetter();
-        charArray.add(pressedKey);
         x = (int)(Math.random() * 690);
         x_Array.add(x);
         y = (int)(Math.random() * 690);
