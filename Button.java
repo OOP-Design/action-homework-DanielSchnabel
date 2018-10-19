@@ -15,11 +15,29 @@ public class Button{
 
 class ButtonFrame extends JFrame{
     ButtonPanel panel = new ButtonPanel();
+
+    private String pressedKey;
+
     public ButtonFrame(){
         super("Button");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700,700);
         add(panel);
+    }
+
+    class KeyListener extends KeyAdapter{
+        public void keyPressed(KeyEvent e){
+            pressedKey = e.getKeyText(e.getKeyCode());
+            addLetterCaller();
+        }
+    }
+
+    public void addLetterCaller(){
+        ButtonPanel.addLetter();
+    }
+
+    public String pressedKeyGetter(){
+        return pressedKey;
     }
 }
 
@@ -27,28 +45,16 @@ class ButtonPanel extends JPanel{
     private ArrayList<String> charArray = new ArrayList<String>();
     private ArrayList<Integer> x_Array = new ArrayList<Integer>();
     private ArrayList<Integer> y_Array = new ArrayList<Integer>();
-
     private String pressedKey;
     private int x;
     private int y;
-    
+
     private String line;
     private int x_location;
     private int y_location;
 
 
     public ButtonPanel(){
-        class KeyListener extends KeyAdapter{
-            public void keyPressed(KeyEvent e){
-                pressedKey = e.getKeyText(e.getKeyCode());
-                charArray.add(pressedKey);
-                x = (int)(Math.random() * 690);
-                x_Array.add(x);
-                y = (int)(Math.random() * 690);
-                y_Array.add(y);
-                repaint();
-            }
-        }
         addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 if(e.getButton() == MouseEvent.BUTTON3){
@@ -56,6 +62,16 @@ class ButtonPanel extends JPanel{
                 }
             }
         });
+    }
+
+    public void addLetter(){
+        pressedKey = ButtonFrame.pressedKeyGetter();
+        charArray.add(pressedKey);
+        x = (int)(Math.random() * 690);
+        x_Array.add(x);
+        y = (int)(Math.random() * 690);
+        y_Array.add(y);
+        repaint();
     }
 
     public void reset(){
