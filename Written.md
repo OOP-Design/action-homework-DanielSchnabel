@@ -1,7 +1,7 @@
 ## Exercise \#1
 What is the difference between a ```KeyListener``` and a ```KeyAdapter```?
 
-
+The KeyListener listens for keystokes, it generates a keyboard event whenever a key is pressed, released, or typed. KeyAdapter, on the other hand, is simply a convience method that creates empty keyPressed, keyReleased, and keyTyped methods that can be filled in as needed. This is becuase KeyListener requires all of these methods (even if they are blank) to operate, and KeyAdapter fills those in for the programmer. Implementing KeyAdapter instead of KeyListener simply saves a few lines of code in most cases.
 
 ## Exercise \#2
 What is the difference between a ```MouseListener``` and a ```MouseMotionListener```.
